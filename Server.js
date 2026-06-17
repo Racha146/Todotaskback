@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 3000;
 const SECRET_KEY = process.env.SECRET_KEY;
 app.use(cors());
 app.use(express.json());
+console.log("1 - before db");
 const db = require("./db");
+console.log("2 - before db");
 
 app.get("/", auth, (req, res) => {
     res.send("Backend Works");
