@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
@@ -5,8 +6,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/auth");
 const PORT = process.env.PORT || 3000;
-const SECRET_KEY =
-    "taskdo_super_secret_key";
+const SECRET_KEY = process.env.SECRET_KEY;
 app.use(cors());
 app.use(express.json());
 const db = require("./db");
