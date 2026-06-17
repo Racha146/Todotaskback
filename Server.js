@@ -13,10 +13,21 @@ console.log("1 - before db");
 const db = require("./db");
 console.log("2 - before db");
 
-app.get("/", auth, (req, res) => {
+app.get("/", (req, res) => {
     res.send("Backend Works");
 });
+app.get("/test-db", (req, res) => {
+    db.query("SELECT 1", (err, result) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
 
+        res.json({
+            success: true,
+            result
+        });
+    });
+});
 app.get("/tasks", auth, (req, res) => {
 
     const user_id = req.user.id;
