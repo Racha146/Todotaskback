@@ -13,7 +13,7 @@ console.log("1 - before db");
 const db = require("./db");
 console.log("2 - before db");
 
-app.get("/", (req, res) => {
+app.get("/", auth, (req, res) => {
     res.send("Backend Works");
 });
 app.get("/test-db", (req, res) => {
