@@ -6,15 +6,8 @@ const db = mysql.createPool({
     password: process.env.MYSQLPASSWORD,
     database: process.env.MYSQLDATABASE,
     port: process.env.MYSQLPORT,
-});
-
-db.connect((err) => {
-    if (err) {
-        console.log("❌ DB Error:", err.message);
-        // ❗ مهم: ما نطيحوش التطبيق
-    } else {
-        console.log("✅ MySQL Connected");
-    }
+    waitForConnections: true,
+    connectionLimit: 10,
 });
 
 module.exports = db;
