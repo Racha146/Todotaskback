@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const app = express();
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/auth");
-
+const PORT = process.env.PORT || 3000;
 const SECRET_KEY =
     "taskdo_super_secret_key";
 app.use(cors());
@@ -124,6 +124,7 @@ app.patch("/tasks/:id/complete", auth, (req, res) => {
         }
     );
 });
+
 app.post("/signup", async(req, res) => {
 
     const {
@@ -211,6 +212,8 @@ app.post("/login", async(req, res) => {
 
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
