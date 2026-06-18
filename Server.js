@@ -28,6 +28,12 @@ app.get("/test-db", (req, res) => {
         });
     });
 });
+app.get("/tables", (req, res) => {
+    db.query("SHOW TABLES", (err, result) => {
+        if (err) return res.json(err);
+        res.json(result);
+    });
+});
 app.get("/tasks", auth, (req, res) => {
 
     const user_id = req.user.id;
